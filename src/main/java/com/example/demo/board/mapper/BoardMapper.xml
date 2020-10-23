@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.board.mapper.BoardMapper">
+
+    <select id="boardCount" resultType="int">
+        SELECT
+            COUNT(*)
+        FROM BOARD_PRO		<!-- 사용할 테이블을 명시 해야함, 컬럼명도 동일해야한다. -->
+    </select>
+
+    <select id="boardList" resultType="com.example.demo.board.domain.BoardVO">
+        SELECT
+            *
+        FROM BOARD_PRO
+    </select>
+
+    <select id="boardDetail" parameterType="int" resultType="com.example.demo.board.domain.BoardVO">
+        SELECT
+            *
+        FROM BOARD_PRO
+        WHERE
+            BNO = #{bno}
+    </select>
+	<!-- 시퀸스가 자동 증가인 경우 insert후에 시퀸스 값을 리턴받을 경우 ==> 설정
+	 게시글 작성 시 게시글 번호가 파일 DB에 등록되어야 하기 떄문에 시퀸스 값을 리턴 받아서 파일 DB에 등록 -->
+    <insert id="boardInsert" parameterType="com.example.demo.board.domain.BoardVO" useGeneratedKeys="true" keyProperty="bno">
+	    INSERT INTO
+	    BOARD_PRO (BNO, SUBJECT,CONTENT,WRITER,REG_DATE)
+	    VALUES(#{bno},#{subject},#{content},#{writer},now())
+	</insert>
+
+	<insert id="fileInsert" parameterType="com.example.demo.board.domain.FileVO">
+	     INSERT INTO
+         FILES (FNO, BNO, FILENAME, FILEORINAME,FILEURL)
+	     VALUES (#{fno},#{bno},#{fileName},#{fileOriName},#{fileUrl})
+	</insert>
+
+    <update id="boardUpdate" parameterType="com.example.demo.board.domain.BoardVO">
+        UPDATE BOARD_PRO
+            SET
+        <if test="subject != null">
+            SUBJECT = #{subject}
+        </if>
+        <if test="subject != null and content != null"> , </if>
+        <if test="content != null">
+            CONTENT = #{content}
+        </if>
+        WHERE BNO = #{bno}
+    </update>
+
+    <delete id="boardDelete" parameterType="int">
+        DELETE FROM BOARD_PRO WHERE BNO = #{bno}
+    </delete>
+</mapper>
