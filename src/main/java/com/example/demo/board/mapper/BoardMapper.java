@@ -27,6 +27,10 @@ public interface BoardMapper {
 	//게시글 삭제
 	public int boardDelete(int bno) throws Exception;
 
-	// BoardMapper.java
+	// 파일 첨부
 	public int fileInsert(FileVO file) throws Exception;
+
+	// 파일 상세
+	public FileVO fileDetail(int bno) throws Exception;
+
 }
