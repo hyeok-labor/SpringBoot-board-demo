@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-xs-12">
-        <form action="/uupdateProc" method="post" enctype="multipart/form-data">
+        <form action="/userupdateProc" method="post">
           <div class="form-group">
             <label for="upw">password</label>
             <input type="text" class="form-control" id="upw" name="upw" value="${udetail.upw}">

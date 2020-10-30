@@ -119,6 +119,7 @@ public class BoardController {
 		mBoardService.boardUpdateService(board);
 
 		return "redirect:/detail/"+request.getParameter("bno");
+
 	}
 
 	@RequestMapping("/delete/{bno}")

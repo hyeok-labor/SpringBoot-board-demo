@@ -63,7 +63,7 @@ public class UserController {
 		return "uupdate";
 	}
 
-	@RequestMapping("/uupdateProc")
+	@RequestMapping("/userupdateProc")
 	private String userUpdateProc(HttpServletRequest request) throws Exception{
 
 		UserVO user = new UserVO();
@@ -72,9 +72,16 @@ public class UserController {
 		user.setGoogleid(request.getParameter("googleid"));
 		user.setNaverid(request.getParameter("naverid"));
 		user.setNickname(request.getParameter("nickname"));
+		user.setUid(request.getParameter("uid"));
 
 		mUserService.userUpdateService(user);
-		System.out.println("업데이트를 하긴 했다.");
+
+		System.out.println("setUpw:"+request.getParameter("upw"));
+		System.out.println("setEmail:"+request.getParameter("email"));
+		System.out.println("setGoogleid:"+request.getParameter("googleid"));
+		System.out.println("user.setUpw:"+user.getUpw());
+		System.out.println("user.setEmail:"+user.getEmail());
+		System.out.println("user.setGoogleid:"+user.getGoogleid());
 		return "redirect:/udetail/"+request.getParameter("uid");
 	}
 

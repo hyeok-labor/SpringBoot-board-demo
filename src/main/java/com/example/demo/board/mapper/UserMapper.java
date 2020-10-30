@@ -7,10 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.board.domain.UserVO;
 
 
-
 @Repository("com.example.demo.board.mapper.UserMapper")
 public interface UserMapper {
-
 	// 유저 목록
 	public List<UserVO> userList() throws Exception;
 
