@@ -16,25 +16,25 @@
 
 <div class="container">
     <div class="col-xs-12" style="margin:15px auto;">
-        <label style="font-size:20px;"><span class="glyphicon glyphicon-list-alt"></span>게시글 목록</label>
-        <button class="btn btn-primary btn-sm" style="float:right;" onclick="location.href='/insert'">글쓰기</button>
+        <label style="font-size:20px;"><span class="glyphicon glyphicon-list-alt"></span>유저 목록</label>
+        <button class="btn btn-primary btn-sm" style="float:right;" onclick="location.href='/uinsert'">유저 등록</button>
     </div>
 
     <div class="col-xs-12">
         <table class="table table-hover">
             <tr>
-                <th>No</th>
-                <th>Subject</th>
-                <th>Writer</th>
-                <th>Date</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Nickname</th>
+                <th>LastLogin</th>
             </tr>
-              <c:forEach var="BoardVO" items="${list}">
-                  <tr onclick="location.href='/detail/${BoardVO.bno}'">
-                      <td>${BoardVO.bno}</td>
-                      <td>${BoardVO.subject}</td>
-                      <td>${BoardVO.writer}</td>
+              <c:forEach var="UserVO" items="${ulist}">
+                  <tr onclick="location.href='/udetail/${UserVO.uid}'">
+                      <td>${UserVO.uname}</td>
+                      <td>${UserVO.email}</td>
+                      <td>${UserVO.nickname}</td>
                       <td>
-                        <fmt:formatDate value="${BoardVO.reg_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
+                        <fmt:formatDate value="${UserVO.lastlogin}" pattern="yyyy.MM.dd HH:mm:ss"/>
                     </td>
                   </tr>
               </c:forEach>

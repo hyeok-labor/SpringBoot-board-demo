@@ -31,7 +31,7 @@ public class CommentController {
 
 	@RequestMapping("/insert") //댓글 작성
 	@ResponseBody
-	private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content) throws Exception{
+	private int mCommentServiceInsert(@RequestParam int bno, @RequestParam String content/*, @RequestParam String writer*/) throws Exception{
 
 		CommentVO comment = new CommentVO();
 		comment.setBno(bno);

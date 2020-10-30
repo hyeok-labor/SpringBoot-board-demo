@@ -12,9 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
     <select id="commentList" resultType="com.example.demo.board.domain.CommentVO">
-        SELECT
-            *
-        FROM COMMENT
+        SELECT * FROM COMMENT
     </select>
 
 

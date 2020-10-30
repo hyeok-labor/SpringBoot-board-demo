@@ -4,29 +4,29 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="layoutTag" tagdir="/WEB-INF/tags"%>
 <layoutTag:layout>
- 
+
 <div class="container">
     <div class="col-xs-12" style="margin:15px auto;">
         <label style="font-size:20px;"><span class="glyphicon glyphicon-list-alt"></span>게시글 상세</label>
     </div>
- 
+
     <div class="col-xs-12">
         <form action="/insertProc" method="post">
             <dl class="dl-horizontal">
               <dt>제목</dt>
               <dd>${detail.subject}</dd>
-              
+
               <dt>작성자</dt>
               <dd>${detail.writer}</dd>
-              
+
               <dt>작성날짜</dt>
               <dd>
                   <fmt:formatDate value="${detail.reg_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
               </dd>
-              
+
               <dt>첨부파일</dt>
               <dd><a href="/fileDown/${files.bno}">${files.fileOriName}</a></dd>
-              
+
               <dt>내용</dt>
               <dd>${detail.content}</dd>
             </dl>
@@ -37,7 +37,7 @@
           <button type="button" class="btn btn-default" onclick="location.href='/list'"> 목록 </button>
         </div>
     </div>
-    
+
     <!--  댓글  -->
     <div class="container">
         <label for="content">comment</label>
@@ -51,12 +51,12 @@
               </div>
         </form>
     </div>
-    
+
     <div class="container">
         <div class="commentList"></div>
     </div>
 </div>
- 
+
 <!--                     추가                         -->
 <%@ include file="commentS.jsp" %>
 </layoutTag:layout>

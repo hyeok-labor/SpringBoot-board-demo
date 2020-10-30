@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.demo.board.mapper.UserMapper">
+
+    <select id="userList" resultType="com.example.demo.board.domain.UserVO">
+        SELECT
+            *
+        FROM USER
+    </select>
+    <select id="userDetail" parameterType="String" resultType="com.example.demo.board.domain.UserVO">
+    	SELECT
+    		*
+    	FROM USER
+    	WHERE
+    		UID = #{uid}
+    </select>
+    <insert id="userInsert" parameterType="com.example.demo.board.domain.UserVO" useGeneratedKeys="true" keyProperty="uid">
+	    INSERT INTO
+	    USER (UID, UPW, UNAME, EMAIL, GOOGLEID, NAVERID, NICKNAME)
+	    VALUES(#{uid},#{upw},#{uname},#{email},#{googleid},#{naverid},#{nickname})
+	</insert>
+	<update id="userUpdate" parameterType="com.example.demo.board.domain.UserVO">
+		UPDATE USER SET
+			UPW = #{upw},
+			EMAIL = #{email},
+			GOOGLEID = #{googleid},
+			NAVERID = #{naverid},
+			NICKNAME = #{nickname}
+		WHERE UID = #{uid}
+	</update>
+	<delete id="userDelete" parameterType="String">
+		DELETE FROM USER WHERE UID = #{uid}
+	</delete>
+</mapper>
